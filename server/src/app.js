@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import pool from "./config/db.js";
+import authRoutes from './routes/authRoutes.js'
 
 const app = express();
 
@@ -28,6 +29,17 @@ app.get("/api/health", async (req, res) => {
       .status(500)
       .json({ status: "error", message: "Database connection failed" });
   }
+});
+
+// Routes
+app.use('/api/auth', authRoutes);
+
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.status || 500).json({
+    message: err.message || 'Internal server error',
+  });
 });
 
 
