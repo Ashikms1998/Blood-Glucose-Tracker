@@ -3,6 +3,7 @@ import api from '../api/client';
 import { useAuth } from '../context/AuthContext';
 import ReadingForm from '../components/ReadingForm';
 import ReadingsList from '../components/ReadingsList';
+import Navbar from '../components/Navbar';
 
 export default function DashboardPage() {
   const { user, logout } = useAuth();
@@ -56,20 +57,7 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <header className="bg-white border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-          <h1 className="text-xl font-bold text-teal-600">Sweety</h1>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-slate-600">Hi, {user?.name}</span>
-            <button
-              onClick={logout}
-              className="text-sm px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-100 text-slate-700 cursor-pointer"
-            >
-              Log out
-            </button>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       <main className="max-w-5xl mx-auto px-4 py-8 space-y-6">
         <ReadingForm

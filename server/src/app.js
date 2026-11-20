@@ -3,6 +3,8 @@ import cors from "cors";
 import pool from "./config/db.js";
 import authRoutes from './routes/authRoutes.js'
 import readingRoutes from './routes/readingRoutes.js';
+import reportRoutes from './routes/reportRoutes.js';
+
 
 const app = express();
 
@@ -35,6 +37,7 @@ app.get("/api/health", async (req, res) => {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/readings', readingRoutes);
+app.use('/api/reports', reportRoutes);
 
 // Global error handler
 app.use((err, req, res, next) => {
